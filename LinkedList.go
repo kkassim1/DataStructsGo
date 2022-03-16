@@ -1,6 +1,10 @@
 package main
 
-// func main() {
+import (
+	"fmt"
+)
 
-// 	fmt.Println("kkhvjhghvg")
-// }
+func mains() {
+
+	fmt.Println("gf")
+}

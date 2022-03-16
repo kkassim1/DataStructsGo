@@ -1,22 +1,38 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
-func TwoS(array []int, target int) []int {
+func TwoNumSum(array []int, target int) []int {
 
-	for i := 0; i < len(array); i++ {
-		fmt.Println(array[i] + 1)
+	sort.Ints(array)
+	left, right := 0, len(array)-1
+
+	for left < right {
+		currSum := array[left] + array[right]
+		if currSum == target {
+			fmt.Println(currSum)
+			return []int{array[left], array[right]}
+		} else if currSum < target {
+			left += 1
+
+		} else {
+			right -= 1
+
+		}
 	}
 
-	return array
+	return array //[]int{}
 
 }
+
 func main() {
 
-	var test = []int{7, 8, 3}
+	var test = []int{7, 8, 8, 3, 8}
 
-	t := TwoS(test, 3)
+	t := TwoNumSum(test, 14)
 
-	// fmt.Println("kkjhghvg", append(t, test...))
-	fmt.Println("kkjhghvg", t)
+	fmt.Println("elements", t)
 }
