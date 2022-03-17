@@ -28,6 +28,22 @@ func TwoNumSum(array []int, target int) []int {
 
 }
 
+// linkedlist
+
+type Node struct {
+	head *Node
+	data int
+}
+
+type LinkedList struct {
+	len  int
+	head *Node
+}
+
+func (head *Node) insertBeg(data int) {
+
+}
+
 func main() {
 
 	var test = []int{7, 8, 8, 3, 8}
@@ -35,4 +51,5 @@ func main() {
 	t := TwoNumSum(test, 14)
 
 	fmt.Println("elements", t)
+
 }
