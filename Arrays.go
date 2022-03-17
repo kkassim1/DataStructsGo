@@ -31,7 +31,7 @@ func TwoNumSum(array []int, target int) []int {
 // linkedlist
 
 type Node struct {
-	head *Node
+	next *Node
 	data int
 }
 
@@ -40,16 +40,42 @@ type LinkedList struct {
 	head *Node
 }
 
-func (head *Node) insertBeg(data int) {
+func (list *LinkedList) insertBeg(data int) {
+
+	tempNode := Node{data: data}
+
+	if list.head != nil {
+
+		tempNode.next = list.head
+		list.head = &tempNode
+		list.len++
+	} else {
+		list.head = &tempNode
+		list.len++
+	}
+	return
+}
+
+func (list *LinkedList) prints() {
+	if list.head == nil {
+		return
+	}
+
+	temp := list.head
+
+	for temp != nil {
+		fmt.Println(temp.data)
+		temp = temp.next
+	}
 
 }
 
 func main() {
 
-	var test = []int{7, 8, 8, 3, 8}
+	t := LinkedList{}
 
-	t := TwoNumSum(test, 14)
+	t.insertBeg(4)
+	t.insertBeg(7)
 
-	fmt.Println("elements", t)
-
+	t.prints()
 }
