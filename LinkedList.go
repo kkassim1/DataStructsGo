@@ -23,6 +23,8 @@ func (list *LinkedList) insertBeg(data int) {
 	tempNode.data = data
 	tempNode.next = list.head
 	list.head = &tempNode
+	list.len++
+
 	// return
 }
 
@@ -35,8 +37,34 @@ func (list *LinkedList) prints() {
 
 	for temp != nil {
 		fmt.Println(temp.data)
+
 		temp = temp.next
+
 	}
+
+}
+
+func (list *LinkedList) insertNth(data int, n int) {
+
+	tempNode := Node{data: data}
+
+	tempNode.data = data
+	tempNode.next = nil
+
+	if n == 1 {
+		tempNode.next = list.head
+		list.head = &tempNode
+		return
+	}
+
+	tempNode2 := list.head
+
+	for i := 0; i < n-2; i++ {
+		tempNode2 = tempNode2.next
+	}
+
+	tempNode.next = tempNode2.next
+	tempNode2.next = &tempNode
 
 }
 
@@ -46,6 +74,7 @@ func main() {
 
 	t.insertBeg(4)
 	t.insertBeg(7)
+	t.insertNth(33, 2)
 
 	t.prints()
 }
