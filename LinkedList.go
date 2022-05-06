@@ -4,8 +4,6 @@ import (
 	"fmt"
 )
 
-// linkedlist
-
 type Node struct {
 	next *Node
 	data int
@@ -67,6 +65,8 @@ func (list *LinkedList) insertNth(data int, n int) {
 	tempNode2.next = &tempNode
 
 }
+
+// linkedlist ----------------------
 
 func main() {
 
