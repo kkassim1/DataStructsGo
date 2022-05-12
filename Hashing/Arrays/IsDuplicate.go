@@ -14,7 +14,9 @@ func IsDuplicateInt(nums []int) bool {
 	hash := make(map[int]bool)
 	for i := 0; i < len(nums); i++ {
 
-		if hash[nums[i]] == true {
+		if hash[nums[i]] {
+
+			fmt.Print(hash[i])
 			return true
 		}
 
@@ -55,11 +57,51 @@ func IsUniqueBits(s string) bool {
 	return true
 }
 
+// func isAnagram(s string, t string) bool {
+
+// }
+
+func isAnagramb(s string, t string) bool {
+
+	lenS := len(s)
+	lenT := len(t)
+
+	if lenS != lenT {
+		return false
+	}
+
+	anagramMap := make(map[string]int)
+
+	for i := 0; i < lenS; i++ {
+		anagramMap[string(s[i])]++
+	}
+
+	for i := 0; i < lenT; i++ {
+		anagramMap[string(t[i])]--
+	}
+
+	for i := 0; i < lenS; i++ {
+		if anagramMap[string(s[i])] != 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
 func main() {
 
-	testArray := make([]int, 0)
+	// testArray := make([]int, 0)
 
-	testArray = append(testArray, 1, 2, 3, 4, 99, 5, 6)
-	// fmt.Print(testArray)
-	fmt.Println(IsDuplicateInt(testArray))
+	// testArray = append(testArray, 1, 2, 3, 4, 4, 99, 5, 6)
+
+	s := "car"
+	t := "akr"
+
+	// fmt.Println(strings.Count("kwam", "a"))
+	h := isAnagramb(s, t)
+	// k := IsUniqueBits(s)
+	// fmt.Println(k)
+	fmt.Println(h)
+	// fmt.Println(IsDuplicateInt(testArray))
 }
