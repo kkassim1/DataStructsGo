@@ -89,19 +89,59 @@ func isAnagramb(s string, t string) bool {
 	return true
 }
 
+func longestcon(nums []int) int {
+
+	maxNum := 0
+
+	// currentSum := 0
+
+	data := make(map[int]int)
+
+	for windowStart := 0; windowStart <= len(nums)-1; windowStart++ {
+
+		maxNum = data[windowStart]
+		data[nums[windowStart]]++
+
+		j := data[nums[windowStart]] - 1
+
+		fmt.Println(data[nums[windowStart]], data, j)
+	}
+	return data[maxNum]
+}
+
+func twoSum(numbers []int, target int) []int {
+
+	start, end := 0, len(numbers)-1
+	for start < end {
+		currentSum := numbers[start] + numbers[end]
+		if currentSum == target {
+			return []int{start, end}
+		} else if currentSum < target {
+			start += 1
+
+		} else {
+			end -= 1
+			fmt.Print(end)
+		}
+	}
+	return []int{}
+}
+
 func main() {
 
-	// testArray := make([]int, 0)
+	testArray := make([]int, 0)
 
-	// testArray = append(testArray, 1, 2, 3, 4, 4, 99, 5, 6)
+	testArray = append(testArray, 2, 7, 11, 15)
 
-	s := "car"
-	t := "akr"
+	// s := "car"
+	// t := "akr"
 
+	// longestcon(testArray)
+	twoSum(testArray, 9)
 	// fmt.Println(strings.Count("kwam", "a"))
-	h := isAnagramb(s, t)
+	// h := isAnagramb(s, t)
 	// k := IsUniqueBits(s)
 	// fmt.Println(k)
-	fmt.Println(h)
+	// fmt.Println(h)
 	// fmt.Println(IsDuplicateInt(testArray))
 }
